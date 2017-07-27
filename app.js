@@ -11,6 +11,20 @@ app.get('/', function(req, res){
 });
 
 app.post('/upload', function(req, res){
+  //需要判断平台
+  var platform = req.body.platform;
+  var app_version = "";
+  var fileName = "";
+  var createTime = "";
+  if(platform = "android"){
+
+
+  }else if (platform = "ios") {
+
+  }
+  app_version = req.body.app_version;
+  createTime = req.body.createTime;
+  fileName = app_version + "-" + "-" + createTime + "-" +file.name
 
   // create an incoming form object
   var form = new formidable.IncomingForm();
@@ -24,7 +38,7 @@ app.post('/upload', function(req, res){
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
   form.on('file', function(field, file) {
-    fs.rename(file.path, path.join(form.uploadDir, file.name));
+    fs.rename(file.path, path.join(form.uploadDir, fileName));
   });
 
   // log any errors that occur
